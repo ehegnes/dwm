@@ -57,6 +57,8 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *brightnessdec[] = { "brightness", "--decrease", NULL };
 static const char *brightnessinc[] = { "brightness", "--increase", NULL };
+static const char *keybrightdec[] = { "keyboard_led", "--decrease", NULL };
+static const char *keybrightinc[] = { "keyboard_led", "--increase", NULL };
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *lockscrn[] = { "slock", NULL };
 static const char *termcmd[]  = { "urxvtc", NULL };
@@ -68,6 +70,8 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ 0|ControlMask,                XK_F6,     spawn,          {.v = brightnessdec } },
 	{ 0|ControlMask,                XK_F7,     spawn,          {.v = brightnessinc } },
+	{ ControlMask|ShiftMask,        XK_F6,     spawn,          {.v = keybrightdec } },
+	{ ControlMask|ShiftMask,        XK_F7,     spawn,          {.v = keybrightinc } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lockscrn } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
